@@ -3,10 +3,10 @@
 tabName=$1
 dbName=$2
 
-echo -n Importing $tabName table into $dbName database with sqoop import command... 
+echo Importing $tabName table into $dbName database with sqoop import command
 
 # Clear $tabName folder in hdfs
-hdfs dfs -rm -r -f -skipTrash $tabName >clear_out.txt 2>clear_err.txt
+hdfs dfs -rm -r -f -skipTrash $tabName
 
 # Import
 sqoop import --connect jdbc:mysql://hadoop-master/pigidser \
@@ -15,7 +15,6 @@ sqoop import --connect jdbc:mysql://hadoop-master/pigidser \
 --hive-import -m 1 \
 --table $tabName \
 --hive-table ${dbName}.${tabName} \
---hive-overwrite \
->sqoop_out.txt 2>sqoop_err.txt
+--hive-overwrite
 
 echo Done!

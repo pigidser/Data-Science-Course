@@ -1,0 +1,35 @@
+Table nobel_prizes {
+  year varchar(4)
+  prize varchar(1000)
+  motivation varchar(1000)
+  laureate_id int [ref: > nobel_laureates.laureate_id]
+  prize_share varchar(5)
+}
+
+Table nobel_laureates {
+  laureate_id int
+  category varchar(100)
+  type varchar(100)
+  full_name varchar(200)
+  birth_date date
+  birth_city_id int [ref: > cities.city_id]
+}
+
+Table cities {
+  city_id int
+  city varchar(100)
+  country_id int [ref: > countries.country_id]
+}
+
+Table countries {
+  country_id int
+  country varchar(100)
+  region varchar(100)
+  population int
+  area numeric
+  pop_density numeric
+  net_migration numeric
+  infant_mrtality numeric
+  gdp_per_capita int
+  literacy numeric
+}

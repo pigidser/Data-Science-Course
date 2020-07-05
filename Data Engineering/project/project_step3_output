@@ -1,0 +1,121 @@
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| code                        | string                                             |          |
+| value                       | string                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:capital, dbName:pigidser_staging, owner:hive, createTime:1593860294, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:code, type:string, comment:null), FieldSchema(name:value, type:string, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/capital, inputFormat:org.apache.hadoop.hive.ql.io.orc.OrcInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.ql.io.orc.OrcSerde, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=2602, numRows=1000, rawDataSize=177000, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\"}, numFiles=1, transient_lastDdlTime=1593860294, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
++-----------------------------+----------------------------------------------------+----------+
+
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| country                     | string                                             |          |
+| city                        | string                                             |          |
+| accentcity                  | string                                             |          |
+| region                      | string                                             |          |
+| population                  | double                                             |          |
+| latitude                    | double                                             |          |
+| longitude                   | double                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:cities, dbName:pigidser_staging, owner:zeppelin, createTime:1593959501, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:country, type:string, comment:null), FieldSchema(name:city, type:string, comment:null), FieldSchema(name:accentcity, type:string, comment:null), FieldSchema(name:region, type:string, comment:null), FieldSchema(name:population, type:double, comment:null), FieldSchema(name:latitude, type:double, comment:null), FieldSchema(name:longitude, type:double, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/cities, inputFormat:org.apache.hadoop.mapred.TextInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, parameters:{serialization.format=, line.delim=\n, field.delim=}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=115081831, numRows=0, rawDataSize=0, numFiles=1, transient_lastDdlTime=1593959502, bucketing_version=2, comment=Imported by sqoop on 2020/07/05 14:31:27}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
++-----------------------------+----------------------------------------------------+----------+
+
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| code                        | string                                             |          |
+| value                       | string                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:continent, dbName:pigidser_staging, owner:hive, createTime:1593860316, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:code, type:string, comment:null), FieldSchema(name:value, type:string, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/continent, inputFormat:org.apache.hadoop.hive.ql.io.orc.OrcInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.ql.io.orc.OrcSerde, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=1100, numRows=500, rawDataSize=86000, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\"}, numFiles=1, transient_lastDdlTime=1593860316, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
++-----------------------------+----------------------------------------------------+----------+
+
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| country                     | string                                             |          |
+| region                      | string                                             |          |
+| population                  | string                                             |          |
+| area                        | string                                             |          |
+| pop_density                 | string                                             |          |
+| coastline                   | string                                             |          |
+| net_migration               | string                                             |          |
+| infant_mortality            | string                                             |          |
+| gdp                         | string                                             |          |
+| literacy                    | string                                             |          |
+| phones                      | string                                             |          |
+| arable                      | string                                             |          |
+| crops                       | string                                             |          |
+| other                       | string                                             |          |
+| climate                     | string                                             |          |
+| birthrate                   | string                                             |          |
+| deathrate                   | string                                             |          |
+| agriculture                 | string                                             |          |
+| industry                    | string                                             |          |
+| service                     | string                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:countries_of_the_world, dbName:pigidser_staging, owner:hive, createTime:1593959176, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:country, type:string, comment:null), FieldSchema(name:region, type:string, comment:null), FieldSchema(name:population, type:string, comment:null), FieldSchema(name:area, type:string, comment:null), FieldSchema(name:pop_density, type:string, comment:null), FieldSchema(name:coastline, type:string, comment:null), FieldSchema(name:net_migration, type:string, comment:null), FieldSchema(name:infant_mortality, type:string, comment:null), FieldSchema(name:gdp, type:string, comment:null), FieldSchema(name:literacy, type:string, comment:null), FieldSchema(name:phones, type:string, comment:null), FieldSchema(name:arable, type:string, comment:null), FieldSchema(name:crops, type:string, comment:null), FieldSchema(name:other, type:string, comment:null), FieldSchema(name:climate, type:string, comment:null), FieldSchema(name:birthrate, type:string, comment:null), FieldSchema(name:deathrate, type:string, comment:null), FieldSchema(name:agriculture, type:string, comment:null), FieldSchema(name:industry, type:string, comment:null), FieldSchema(name:service, type:string, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/countries_of_the_world, inputFormat:org.apache.hadoop.hive.ql.io.orc.OrcInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.ql.io.orc.OrcSerde, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=31492, numRows=2724, rawDataSize=4832376, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\"}, numFiles=1, transient_lastDdlTime=1593959176, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
++-----------------------------+----------------------------------------------------+----------+
+
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| code                        | string                                             |          |
+| value                       | string                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:currency, dbName:pigidser_staging, owner:hive, createTime:1593860336, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:code, type:string, comment:null), FieldSchema(name:value, type:string, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/currency, inputFormat:org.apache.hadoop.hive.ql.io.orc.OrcInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.ql.io.orc.OrcSerde, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=1487, numRows=500, rawDataSize=86000, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\"}, numFiles=1, transient_lastDdlTime=1593860336, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
++-----------------------------+----------------------------------------------------+----------+
+
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| code                        | string                                             |          |
+| value                       | string                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:iso3, dbName:pigidser_staging, owner:hive, createTime:1593860357, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:code, type:string, comment:null), FieldSchema(name:value, type:string, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/iso3, inputFormat:org.apache.hadoop.hive.ql.io.orc.OrcInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.ql.io.orc.OrcSerde, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=1670, numRows=500, rawDataSize=86500, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\"}, numFiles=1, transient_lastDdlTime=1593860357, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
++-----------------------------+----------------------------------------------------+----------+
+
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| code                        | string                                             |          |
+| value                       | string                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:names, dbName:pigidser_staging, owner:hive, createTime:1593860377, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:code, type:string, comment:null), FieldSchema(name:value, type:string, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/names, inputFormat:org.apache.hadoop.hive.ql.io.orc.OrcInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.ql.io.orc.OrcSerde, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=2767, numRows=500, rawDataSize=89500, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\"}, numFiles=1, transient_lastDdlTime=1593860377, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
++-----------------------------+----------------------------------------------------+----------+
+
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| year                        | string                                             |          |
+| category                    | string                                             |          |
+| prize                       | string                                             |          |
+| motivation                  | string                                             |          |
+| prizeshare                  | string                                             |          |
+| laureate_id                 | string                                             |          |
+| laureate_type               | string                                             |          |
+| full_name                   | string                                             |          |
+| birth_date                  | string                                             |          |
+| birth_city                  | string                                             |          |
+| birth_country               | string                                             |          |
+| sex                         | string                                             |          |
+| organization_name           | string                                             |          |
+| organization_city           | string                                             |          |
+| organization_country        | string                                             |          |
+| death_date                  | string                                             |          |
+| death_city                  | string                                             |          |
+| death_country               | string                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:nobel_laureates, dbName:pigidser_staging, owner:hive, createTime:1593959199, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:year, type:string, comment:null), FieldSchema(name:category, type:string, comment:null), FieldSchema(name:prize, type:string, comment:null), FieldSchema(name:motivation, type:string, comment:null), FieldSchema(name:prizeshare, type:string, comment:null), FieldSchema(name:laureate_id, type:string, comment:null), FieldSchema(name:laureate_type, type:string, comment:null), FieldSchema(name:full_name, type:string, comment:null), FieldSchema(name:birth_date, type:string, comment:null), FieldSchema(name:birth_city, type:string, comment:null), FieldSchema(name:birth_country, type:string, comment:null), FieldSchema(name:sex, type:string, comment:null), FieldSchema(name:organization_name, type:string, comment:null), FieldSchema(name:organization_city, type:string, comment:null), FieldSchema(name:organization_country, type:string, comment:null), FieldSchema(name:death_date, type:string, comment:null), FieldSchema(name:death_city, type:string, comment:null), FieldSchema(name:death_country, type:string, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/nobel_laureates, inputFormat:org.apache.hadoop.hive.ql.io.orc.OrcInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.ql.io.orc.OrcSerde, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=73642, numRows=9693, rawDataSize=17238774, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\"}, numFiles=1, transient_lastDdlTime=1593959199, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
+20 rows selected (0.216 seconds)
++-----------------------------+----------------------------------------------------+----------+
+
++-----------------------------+----------------------------------------------------+----------+
+|          col_name           |                     data_type                      | comment  |
++-----------------------------+----------------------------------------------------+----------+
+| code                        | string                                             |          |
+| value                       | string                                             |          |
+|                             | NULL                                               | NULL     |
+| Detailed Table Information  | Table(tableName:phone, dbName:pigidser_staging, owner:hive, createTime:1593860399, lastAccessTime:0, retention:0, sd:StorageDescriptor(cols:[FieldSchema(name:code, type:string, comment:null), FieldSchema(name:value, type:string, comment:null)], location:hdfs://adh-master:8020/apps/hive/warehouse/pigidser_staging.db/phone, inputFormat:org.apache.hadoop.hive.ql.io.orc.OrcInputFormat, outputFormat:org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat, compressed:false, numBuckets:-1, serdeInfo:SerDeInfo(name:null, serializationLib:org.apache.hadoop.hive.ql.io.orc.OrcSerde, parameters:{serialization.format=1}), bucketCols:[], sortCols:[], parameters:{}, skewedInfo:SkewedInfo(skewedColNames:[], skewedColValues:[], skewedColValueLocationMaps:{}), storedAsSubDirectories:false), partitionKeys:[], parameters:{totalSize=1188, numRows=250, rawDataSize=43250, COLUMN_STATS_ACCURATE={\"BASIC_STATS\":\"true\"}, numFiles=1, transient_lastDdlTime=1593860399, bucketing_version=2}, viewOriginalText:null, viewExpandedText:null, tableType:MANAGED_TABLE, rewriteEnabled:false, catName:hive, ownerType:USER) |          |
++-----------------------------+----------------------------------------------------+----------+
+

@@ -1,0 +1,13 @@
+CREATE TABLE capital (code string, value string);
+CREATE TABLE continent (code string, value string); 
+CREATE TABLE currency (code string, value string); 
+CREATE TABLE iso3 (code string, value string); 
+CREATE TABLE names (code string, value string); 
+CREATE TABLE phone (code string, value string); 
+CREATE TABLE countries_of_the_world (country string, region string, population int, area int, pop_density decimal(12,5), coastline decimal(12,5), net_migration decimal(12,5),
+infant_mortality decimal(12,5), gdp int, literacy decimal(12,5), phones decimal(12,5), arable decimal(12,5), crops decimal(12,5), other decimal(12,5), climate decimal(12,5), birthrate decimal(12,5),
+deathrate decimal(12,5), agriculture decimal(12,5), industry decimal(12,5), service decimal(12,5));
+CREATE TABLE nobel_laureates (
+year int, category string, prize string, motivation string, prizeshare string, laureate_id int, laureate_type string, full_name string, birth_date date, birth_city string, birth_country string,
+sex string, organization_name string, organization_city string, organization_country string, death_date date, death_city string, death_country string);
+CREATE TABLE cities (city string, accentcity string, region string, population double, latitude double, longitude double);

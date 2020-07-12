@@ -1,0 +1,5 @@
+1. Source file
+2. To create 3 tables in different formats execute script:
+$ ./create_hive_table_from_file_books_all.sh
+3. $ hive --orcfiledump /user/hive/warehouse/test.db/books_orc/part-00000-449c7a4b-90fd-46d3-83f8-b80e6b0e560f-c000
+4. 

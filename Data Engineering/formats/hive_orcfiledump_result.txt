@@ -1,0 +1,119 @@
+Structure for /user/hive/warehouse/test.db/books_orc/part-00000-449c7a4b-90fd-46d3-83f8-b80e6b0e560f-c000
+File Version: 0.12 with HIVE_8732
+Rows: 538
+Compression: SNAPPY
+Compression size: 262144
+Type: struct<year:int,book_name:string,author:string,language_code:string,author_rating:string,book_average_rating:string,book_ratings_count:string,genre:string,gross_sales:string,publisher_revenue:string,sale_price:string,sales_rank:string,publisher:string,units_sold:string>
+
+Stripe Statistics:
+  Stripe 1:
+    Column 0: count: 538 hasNull: false
+    Column 1: count: 536 hasNull: true min: -430 max: 2016 sum: 1056976
+    Column 2: count: 538 hasNull: false min:  max: é‹¼ã®éŒ¬é‡‘è¡“å¸« 1 sum: 11106
+    Column 3: count: 538 hasNull: false min:  #1 max: Zadie Smith sum: 7526
+    Column 4: count: 538 hasNull: false min:  max: spa sum: 3823
+    Column 5: count: 538 hasNull: false min:  max: spa sum: 5154
+    Column 6: count: 538 hasNull: false min:  max: eng sum: 2983
+    Column 7: count: 538 hasNull: false min:  max: eng sum: 2997
+    Column 8: count: 538 hasNull: false min:  Karen  Berger" max: nonfiction sum: 5667
+    Column 9: count: 538 hasNull: false min:  James Stern" max: nonfiction sum: 4034
+    Column 10: count: 538 hasNull: false min: 0 max: publisher revenue sum: 2991
+    Column 11: count: 538 hasNull: false min: 0 max: sale price sum: 2433
+    Column 12: count: 538 hasNull: false min: 0 max: sales rank sum: 1786
+    Column 13: count: 538 hasNull: false min: "Amazon Digital Services max: nonfiction sum: 9307
+    Column 14: count: 538 hasNull: false min:   Inc." max: units sold sum: 4794
+
+File Statistics:
+  Column 0: count: 538 hasNull: false
+  Column 1: count: 536 hasNull: true min: -430 max: 2016 sum: 1056976
+  Column 2: count: 538 hasNull: false min:  max: é‹¼ã®éŒ¬é‡‘è¡“å¸« 1 sum: 11106
+  Column 3: count: 538 hasNull: false min:  #1 max: Zadie Smith sum: 7526
+  Column 4: count: 538 hasNull: false min:  max: spa sum: 3823
+  Column 5: count: 538 hasNull: false min:  max: spa sum: 5154
+  Column 6: count: 538 hasNull: false min:  max: eng sum: 2983
+  Column 7: count: 538 hasNull: false min:  max: eng sum: 2997
+  Column 8: count: 538 hasNull: false min:  Karen  Berger" max: nonfiction sum: 5667
+  Column 9: count: 538 hasNull: false min:  James Stern" max: nonfiction sum: 4034
+  Column 10: count: 538 hasNull: false min: 0 max: publisher revenue sum: 2991
+  Column 11: count: 538 hasNull: false min: 0 max: sale price sum: 2433
+  Column 12: count: 538 hasNull: false min: 0 max: sales rank sum: 1786
+  Column 13: count: 538 hasNull: false min: "Amazon Digital Services max: nonfiction sum: 9307
+  Column 14: count: 538 hasNull: false min:   Inc." max: units sold sum: 4794
+
+Stripes:
+  Stripe: offset: 3 data: 40875 rows: 538 tail: 438 index: 596
+    Stream: column 0 section ROW_INDEX start: 3 length 12
+    Stream: column 1 section ROW_INDEX start: 15 length 33
+    Stream: column 2 section ROW_INDEX start: 48 length 71
+    Stream: column 3 section ROW_INDEX start: 119 length 40
+    Stream: column 4 section ROW_INDEX start: 159 length 29
+    Stream: column 5 section ROW_INDEX start: 188 length 29
+    Stream: column 6 section ROW_INDEX start: 217 length 29
+    Stream: column 7 section ROW_INDEX start: 246 length 31
+    Stream: column 8 section ROW_INDEX start: 277 length 51
+    Stream: column 9 section ROW_INDEX start: 328 length 49
+    Stream: column 10 section ROW_INDEX start: 377 length 44
+    Stream: column 11 section ROW_INDEX start: 421 length 37
+    Stream: column 12 section ROW_INDEX start: 458 length 37
+    Stream: column 13 section ROW_INDEX start: 495 length 61
+    Stream: column 14 section ROW_INDEX start: 556 length 43
+    Stream: column 1 section PRESENT start: 599 length 13
+    Stream: column 1 section DATA start: 612 length 1017
+    Stream: column 2 section DATA start: 1629 length 8802
+    Stream: column 2 section LENGTH start: 10431 length 548
+    Stream: column 3 section DATA start: 10979 length 1083
+    Stream: column 3 section LENGTH start: 12062 length 404
+    Stream: column 3 section DICTIONARY_DATA start: 12466 length 4991
+    Stream: column 4 section DATA start: 17457 length 524
+    Stream: column 4 section LENGTH start: 17981 length 148
+    Stream: column 4 section DICTIONARY_DATA start: 18129 length 2062
+    Stream: column 5 section DATA start: 20191 length 489
+    Stream: column 5 section LENGTH start: 20680 length 52
+    Stream: column 5 section DICTIONARY_DATA start: 20732 length 611
+    Stream: column 6 section DATA start: 21343 length 544
+    Stream: column 6 section LENGTH start: 21887 length 61
+    Stream: column 6 section DICTIONARY_DATA start: 21948 length 679
+    Stream: column 7 section DATA start: 22627 length 2600
+    Stream: column 7 section LENGTH start: 25227 length 380
+    Stream: column 8 section DATA start: 25607 length 531
+    Stream: column 8 section LENGTH start: 26138 length 30
+    Stream: column 8 section DICTIONARY_DATA start: 26168 length 820
+    Stream: column 9 section DATA start: 26988 length 1080
+    Stream: column 9 section LENGTH start: 28068 length 282
+    Stream: column 9 section DICTIONARY_DATA start: 28350 length 2427
+    Stream: column 10 section DATA start: 30777 length 1047
+    Stream: column 10 section LENGTH start: 31824 length 266
+    Stream: column 10 section DICTIONARY_DATA start: 32090 length 2397
+    Stream: column 11 section DATA start: 34487 length 544
+    Stream: column 11 section LENGTH start: 35031 length 123
+    Stream: column 11 section DICTIONARY_DATA start: 35154 length 959
+    Stream: column 12 section DATA start: 36113 length 1078
+    Stream: column 12 section LENGTH start: 37191 length 216
+    Stream: column 12 section DICTIONARY_DATA start: 37407 length 1259
+    Stream: column 13 section DATA start: 38666 length 553
+    Stream: column 13 section LENGTH start: 39219 length 106
+    Stream: column 13 section DICTIONARY_DATA start: 39325 length 614
+    Stream: column 14 section DATA start: 39939 length 556
+    Stream: column 14 section LENGTH start: 40495 length 142
+    Stream: column 14 section DICTIONARY_DATA start: 40637 length 837
+    Encoding column 0: DIRECT
+    Encoding column 1: DIRECT_V2
+    Encoding column 2: DIRECT_V2
+    Encoding column 3: DICTIONARY_V2[410]
+    Encoding column 4: DICTIONARY_V2[143]
+    Encoding column 5: DICTIONARY_V2[48]
+    Encoding column 6: DICTIONARY_V2[129]
+    Encoding column 7: DIRECT_V2
+    Encoding column 8: DICTIONARY_V2[142]
+    Encoding column 9: DICTIONARY_V2[421]
+    Encoding column 10: DICTIONARY_V2[382]
+    Encoding column 11: DICTIONARY_V2[173]
+    Encoding column 12: DICTIONARY_V2[402]
+    Encoding column 13: DICTIONARY_V2[139]
+    Encoding column 14: DICTIONARY_V2[195]
+
+File length: 42903 bytes
+Padding length: 0 bytes
+Padding ratio: 0%
+________________________________________________________________________________________________________________________
+

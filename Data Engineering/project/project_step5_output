@@ -1,0 +1,204 @@
+%sh
+rm -r -f /tmp/pigidser_raw
+rm -r -f /tmp/pigidser_stage
+mkdir /tmp/pigidser_raw
+mkdir /tmp/pigidser_stage
+cd /home/deng/Data/
+cp *.json /tmp/pigidser_raw
+cp countries_of_the_world.csv nobel-laureates.csv /tmp/pigidser_raw
+ls /tmp/pigidser_raw
+
+
+%python
+# transform json-files (capital, continent, currency, iso3, names, phone) to csv
+
+import json
+# import csv
+# import subprocess
+
+def transform_json_to_csv(file_name):
+    with open("/tmp/pigidser_raw/"+file_name+".json","r") as fp:
+        buf = fp.read()
+    data_dict = json.loads(buf)
+    
+    with open("/tmp/pigidser_stage/"+file_name+".csv", 'w') as f:
+        for key in data_dict.keys():
+            f.write("%s,%s\n"%(key,data_dict[key]))
+
+files_to_process = ['capital','continent','currency','iso3','names', 'phone']
+for file in files_to_process:
+    transform_json_to_csv(file)
+
+# countries_of_the_world.csv consists of comma in number as well as delimited character --> replace a comma with a point
+# also to remove multy-spaces
+
+import re
+
+with open("/tmp/pigidser_raw/countries_of_the_world.csv","r") as f_input:
+    with open('/tmp/pigidser_stage/countries_of_the_world.csv', 'w') as f_output:
+        for result in f_input:
+            result = re.sub(r'"(\d+),(\d+)"', r'\1.\2', result) # find a comma between digits in quotes and replace to a point
+            result = re.sub(r'\s+', r' ', result) # replace multi-space to single space
+            result = re.sub(r'\s,', r',', result)
+            result = re.sub(r'\s+",', r'",', result)
+            result = re.sub(r'"\s+', r'"', result)
+            f_output.write(result+"\n")
+f_input.close
+f_output.close
+
+with open("/tmp/pigidser_raw/nobel-laureates.csv","r") as f_input:
+    with open('/tmp/pigidser_stage/nobel-laureates.csv', 'w') as f_output:
+        for result in f_input:
+            result = re.sub(r'[\"]+','"',result)
+            result = re.sub(r'\s+', r' ', result)
+            result = re.sub(r'\s,', r',', result)
+            f_output.write(result+"\n")
+f_input.close
+f_output.close
+
+
+
+%sh
+ls /tmp/pigidser_stage
+hdfs dfs -rm -r -f -skipTrash pigidser_datamart
+hdfs dfs -mkdir pigidser_datamart
+cd /tmp/pigidser_stage
+hdfs dfs -put *.*  pigidser_datamart
+hdfs dfs -ls /user/zeppelin/pigidser_datamart
+
+
+
+%spark.pyspark
+capital = spark.read.csv("pigidser_datamart/capital.csv",schema="code string, capital string",header=False)
+continent = spark.read.csv("pigidser_datamart/continent.csv",schema="code string, continent string",header=False)
+currency = spark.read.csv("pigidser_datamart/currency.csv",schema="code string, currency string",header=False)
+iso3 = spark.read.csv("pigidser_datamart/iso3.csv",schema="code string, iso3 string",header=False)
+names = spark.read.csv("pigidser_datamart/names.csv",schema="code string, name string",header=False)
+phone = spark.read.csv("pigidser_datamart/phone.csv",schema="code string, phone string",header=False)
+countries = spark.read.csv("pigidser_datamart/countries_of_the_world.csv",header=True)
+laureates = spark.read.csv("pigidser_datamart/nobel-laureates.csv",header=True)
+
+
+
+%spark.pyspark
+import re
+
+def standartize_column_name(rename_df):
+    for column in rename_df.columns:
+        new_column = re.sub(r'[\.\s\(\)\/\$\%]+','_',column.lower().strip())
+        new_column = re.sub(r'[\_]+','_',new_column)
+        new_column = re.sub(r'(\S+)_\b', r'\1', new_column) # if name like abcdefgh_ remove "_"
+        rename_df = rename_df.withColumnRenamed(column, new_column)
+    return rename_df
+
+countries = standartize_column_name(countries)
+laureates = standartize_column_name(laureates)
+
+
+
+%spark.pyspark
+# joining by a key field (with the same name) to get only one key field in the result dataframe
+country_properties = capital.join(continent, 'code')\
+    .join(currency, 'code')\
+    .join(iso3, 'code')\
+    .join(names, 'code')\
+    .join(phone, 'code')
+
+countries = countries\
+    .join(country_properties.select('code','capital','continent','currency','iso3','name','phone'),countries['country']==country_properties['name'],'left')\
+    .drop("name","capital")
+
+nobel_laureates = laureates.select('laureate_id','category','laureate_type','full_name','birth_date',
+    'birth_city','birth_country','sex','organization_name','organization_city','organization_country',
+    'death_date','death_city','death_country')
+
+nobel_prizes = laureates.select("year","prize","motivation","prize_share","laureate_id")
+
+
+
+%spark.pyspark
+cities = spark.read.format("jdbc") \
+    .option("url","jdbc:mysql://10.93.1.9/skillfactory") \
+    .option('driver',"com.mysql.jdbc.Driver") \
+    .option("dbtable","cities") \
+    .option("user","mysql") \
+    .option("password","arenadata") \
+    .load()
+cities = standartize_column_name(cities)
+cities = cities.where("region!='region'")
+
+
+
+%spark.pyspark
+nobel_prizes_dataset = nobel_prizes.join(nobel_laureates, 'laureate_id')
+countries_dataset = countries
+
+
+
+%spark.pyspark
+
+import pyspark.sql.functions as F
+
+# current moment variables (for history building imitation)
+pt_year = 2020
+pt_month = 5
+
+if pt_month <= 3:
+    pt_quarter = 1
+elif pt_month <= 6:
+    pt_quarter = 2
+elif pt_month <= 9:
+    pt_quarter = 3
+else:
+    pt_quarter = 4
+    
+# Adding partition fields
+countries = countries.withColumn("pt_year",F.lit(pt_year)).withColumn("pt_quarter",F.lit(pt_quarter))
+cities = cities.withColumn("pt_year",F.lit(pt_year)).withColumn("pt_month",F.lit(pt_month))
+nobel_laureates = nobel_laureates.withColumn("pt_year",F.lit(pt_year)).withColumn("pt_month",F.lit(pt_month))
+nobel_prizes = nobel_prizes.withColumn("pt_year",F.lit(pt_year)).withColumn("pt_month",F.lit(pt_month))
+
+nobel_prizes_dataset = nobel_prizes_dataset.withColumn("pt_year",F.lit(pt_year)).withColumn("pt_month",F.lit(pt_month))
+countries_dataset = countries_dataset.withColumn("pt_year",F.lit(pt_year)).withColumn("pt_quarter",F.lit(pt_quarter))
+
+countries.write.format("orc") \
+    .mode('overwrite') \
+    .option("compression","snappy") \
+    .partitionBy("pt_year","pt_quarter") \
+    .saveAsTable("countries")
+cities.write.format("orc") \     
+    .mode('overwrite') \
+    .option("compression","snappy") \
+    .partitionBy("pt_year","pt_month") \
+    .saveAsTable("cities")
+nobel_prizes.write.format("orc") \
+    .mode('overwrite') \
+    .option("compression","snappy") \
+    .partitionBy("pt_year","pt_month") \
+    .saveAsTable("nobel_prizes")
+nobel_laureates.write.format("orc") \
+    .mode('overwrite') \
+    .option("compression","snappy") \
+    .partitionBy("pt_year","pt_month") \
+    .saveAsTable("nobel_laureates")
+nobel_prizes_dataset.write.format("orc") \
+    .mode('overwrite') \
+    .option("compression","snappy") \
+    .partitionBy("pt_year","pt_month") \
+    .saveAsTable("nobel_prizes_dataset")
+countries_dataset.write.format("orc") \
+    .mode('overwrite') \
+    .option("compression","snappy") \
+    .partitionBy("pt_year","pt_quarter") \
+    .saveAsTable("countries_dataset")
+
+
+%sh
+rm -r -f /tmp/pigidser_raw
+rm -r -f /tmp/pigidser_stage
+hdfs dfs -rm -r -f -skipTrash pigidser_datamart
+
+
+
+%spark.pyspark
+spark.stop()

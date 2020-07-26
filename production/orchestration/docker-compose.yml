@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+    rabbitmq:
+        image: rabbitmq:3-management
+        container_name: rabbitmq
+        hostname: rabbitmq
+        restart: always
+        ports:
+            - 5672:5672
+            - 15672:15672
+
+    features:
+        build:
+            context: ./features
+        restart: always
+        depends_on:
+            - rabbitmq
+        volumes: 
+            - ./features/logs/:/usr/src/app/logs/
+
+    model:
+        build:
+            context: ./model
+        restart: always
+        depends_on:
+            - rabbitmq
+            - features
+        volumes: 
+            - ./model/logs/:/usr/src/app/logs/
+
+    metrics:
+        build:
+            context: ./metrics
+        restart: always
+        depends_on:
+            - rabbitmq
+            - features
+            - model
+        volumes: 
+            - ./metrics/logs/:/usr/src/app/logs/
